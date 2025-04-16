@@ -19,6 +19,12 @@
         <h1>Hello HTMX</h1>
         <label>
             <input type="checkbox"
+                hx-trigger="change"
+                   hx-get="/hello-htmx"
+                   hx-target="#more-info"
+
+
+
                     <%--
 
                     Bei Klick "Infos" vom Backend laden:

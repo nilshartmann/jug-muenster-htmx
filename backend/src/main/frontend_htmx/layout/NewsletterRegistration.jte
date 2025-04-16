@@ -15,6 +15,11 @@
 <%--         -->--%>
 <form
         class="max-w-1/4 flex items-center space-x-4 pe-2 ps-2 font-barlow"
+        hx-post="/newsletter?slowdown=2400"
+        hx-swap="outerHTML"
+        hx-indicator="#newsletterLoading"
+        hx-disabled-elt="this, input, button"
+        on:input="document.getElementById('newsletterSubscribed').remove()"
 >
     <label for="newsletterEmailInput">Don't miss new recipes. Subscribe to newsletter</label>
     <div class="max-w-64">
@@ -24,6 +29,7 @@
                 type="text"
                 value="${newsletterEmail}"
                 placeholder="E-Mail"
+
         />
     </div>
     <div>
@@ -32,6 +38,8 @@
                     id="subscribeButton"
                     type="submit"
             >Subscribe
+            @template.components.LoadingIndicator(id = "newsletterLoading", secondary = true)
+
             </button>
         </div>
     </div>

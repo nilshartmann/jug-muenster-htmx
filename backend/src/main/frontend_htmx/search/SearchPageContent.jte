@@ -18,6 +18,7 @@
          - hx-indicator #searchIndicator
               ^-- mit Loading-Indicator vergleichen, der in SPA werkelt
          -->
+
         <input
                 type="search"
                 name="search"
@@ -26,6 +27,13 @@
                 aria-label="Enter at least three chars to start searching for recipes"
                 class="h-8 w-full max-w-full rounded border border-gray-400 bg-white p-6 text-gray-500 hover:shadow-lg"
                 value="${search}"
+                hx-trigger="input[target.value.length > 2] changed delay:200ms"
+                hx-get="/search"
+                hx-target="#searchResult"
+                hx-swap="outerHTML"
+                hx-indicator="#searchIndicator"
+                hx-on:input="handleInputChange(event)"
+
         />
         <!-- todo 02:
          - hx-get auf /search/reset
